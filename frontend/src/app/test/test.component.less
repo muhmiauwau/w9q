@@ -1,0 +1,147 @@
+:host{
+    display: block;
+}
+
+
+
+main{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: #1b1f3b;
+    
+}
+
+section{
+    display: block;
+    background: #1b1f3b;
+    color: #fff;
+    padding: 1em;
+
+
+    &.active{
+        background: #fff;
+        color: #1b1f3b;
+        height: 100%;
+        border-radius: 1.25rem;
+
+        &:first-of-type{
+            border-radius: 0 0 1.25rem 1.25rem;
+        }
+
+        &:last-of-type{
+            border-radius: 1.25rem 1.25rem 0 0;
+        }
+    }
+
+
+    .section-header{
+        color: #fff;
+        display: flex;
+
+        button{
+            color: #fff;
+        }
+    }
+
+    &.active .section-header{
+        display: none;
+    }
+
+
+    .section-content{
+        display: none;
+        height: 100%;
+    }
+
+    &.active .section-content{
+        display: block;
+    }
+
+}
+
+
+
+.header{
+
+    display: flex;
+    // width: 100%;
+    align-items: center;
+    tui-avatar{
+        background: #fff;
+        margin-left: auto;
+    }
+
+    .search{
+        margin: 0 auto ;
+        min-width: 50%;
+    }
+    
+
+
+    .logo{
+        display: block;
+        width: 100px;
+        height: 32px;
+        background: url("assets/w9q-high-resolution-logo-white-transparent.svg")  center center no-repeat;
+        background-size: contain;        
+    }
+
+    &.active .logo{
+        transform: scale(1.6);
+        transform-origin: 0 0;
+        background-image: url("assets/w9q-high-resolution-logo-black-transparent.svg");
+    }
+
+
+}
+
+
+.selectedEntry{
+    margin: auto;
+    --tui-text-primary:#fff;
+    --tui-text-secondary: #fff;
+    min-width: 300px;
+}
+
+
+
+.kanban{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ; 
+    margin: -1em;
+    height: 100%;
+
+    .col{
+        height: 100%;
+        padding: 1em;
+    }
+
+    .col + .col{
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            background: #1b1f3b;
+            width: 1px;
+            opacity: .2;
+        }
+    }
+
+    .entry + .entry{
+        position: relative;
+        &:before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            border-top: 1px solid #1b1f3b;
+            opacity: .2;
+        }
+    }
+}
+

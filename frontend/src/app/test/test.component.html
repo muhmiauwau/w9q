@@ -1,0 +1,97 @@
+<main>
+
+
+    <section class="header">
+        <div class="logo"></div>
+
+        <search tuiSearch class="search">
+            <form [formGroup]="form">
+                <fieldset>
+                    <tui-textfield iconStart="@tui.search" tuiTextfieldSize="s">
+                        <input placeholder="Search" tuiTextfield formControlName="search" />
+                    </tui-textfield>
+                </fieldset>
+            </form>
+        </search>
+
+        <tui-avatar src="@tui.user" size="s" [tuiAppearanceState]="open ? 'active' : null" [tuiDropdown]="dropdown"
+            [(tuiDropdownOpen)]="open" />
+        <ng-template #dropdown let-close>
+            <tui-data-list>
+                <tui-opt-group>
+                    <button *ngFor="let item of items" tuiOption type="button" (click)="onClick()">
+                        {{ item }}
+                    </button>
+                </tui-opt-group>
+                <tui-opt-group>
+                    <button tuiOption type="button" (click)="close()">
+                        Logout
+                    </button>
+                </tui-opt-group>
+            </tui-data-list>
+        </ng-template>
+
+
+    </section>
+    <section [class.active]="section=='kanban'">
+        <div class="section-header">
+            <button appearance="flat" tuiButton type="button"  (click)="changeSection('kanban')">
+                <tui-icon icon="@tui.kanban" />
+                kanban
+            </button>
+            <div class="selectedEntry" tuiCell>
+                <div tuiTitle>
+                    Title
+                    <div tuiSubtitle>Description</div>
+                </div>
+                <div tuiTitle>
+                    Secondary title
+                    <div tuiSubtitle>Another description</div>
+                </div>
+            </div>
+        </div>
+       
+        <div class="section-content">
+            <div class="kanban">
+                <div class="col" *ngFor="let col of cols">
+                    <div class="entry" *ngFor="let size of sizes" tuiCell>
+                        <div tuiTitle>
+                            Title
+                            <div tuiSubtitle>Description</div>
+                        </div>
+                        <div tuiTitle>
+                            Secondary title
+                            <div tuiSubtitle>Another description</div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+    <section [class.active]="section=='mail'">
+        <button appearance="flat" tuiButton type="button" class="section-header" (click)="changeSection('mail')">
+            <tui-icon icon="@tui.mails" />
+            mail
+        </button>
+        <div class="section-content">
+            <div class="kanban">
+                <div class="col" *ngFor="let col of cols">
+                    <div class="entry" *ngFor="let size of sizes" tuiCell>
+                        <div tuiTitle>
+                            Title
+                            <div tuiSubtitle>Description</div>
+                        </div>
+                        <div tuiTitle>
+                            Secondary title
+                            <div tuiSubtitle>Another description</div>
+                        </div>
+                    </div>
+    
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</main>
