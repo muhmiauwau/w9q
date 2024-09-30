@@ -53,20 +53,47 @@
        
         <div class="section-content">
             <div class="kanban">
-                <div class="col" *ngFor="let col of cols">
-                    <div class="entry" *ngFor="let size of sizes" tuiCell>
-                        <div tuiTitle>
-                            Title
-                            <div tuiSubtitle>Description</div>
-                        </div>
-                        <div tuiTitle>
-                            Secondary title
-                            <div tuiSubtitle>Another description</div>
-                        </div>
+                <ng-container  *ngFor="let sta of status"  >
+                <div 
+                    class="col" 
+                    dndDropzone
+                    (dndDragover)="onDragover($event)"
+                    (dndDrop)="onDrop($event, sta.id)"
+                    dndEffectAllowed="move"
+                >
+                    <div
+                        style="border: 1px orangered solid; border-radius: 5px; padding: 15px;"
+                        dndPlaceholderRef>
+                        placeholder
                     </div>
+                    <ng-container *ngFor="let kentry of kEntries" >
+                        @if(kentry.status == sta.id){ 
+                            <div class="entry" tuiCell
+                            [dndDraggable]="kentry.id"
+                            dndEffectAllowed="all"
+                            (dndStart)="onDragStart($event)"
+                            (dndMoved)="onDraggableMoved($event)"
+                            (dndCanceled)="onDragCanceled($event)"
+                            (dndEnd)="onDragEnd($event)">
+                                <div tuiTitle>
+                                    {{kentry.title}}
+                                    <div tuiSubtitle>Description   {{kentry.id}}</div>
+                                </div>
+                                <div tuiTitle>
+                                    Secondary title
+                                    <div tuiSubtitle>{{kentry.status}}</div>
+                                </div>
+                            </div>
+                        }
+                    </ng-container>
     
-                </div>
+                </div> 
+            </ng-container>
+
+
+
             </div>
+       
         </div>
     </section>
     <section [class.active]="section=='mail'">

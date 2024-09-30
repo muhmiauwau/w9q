@@ -29,6 +29,7 @@
     "@taiga-ui/icons": "^4.8.1",
     "@taiga-ui/kit": "^4.8.1",
     "@taiga-ui/layout": "^4.8.1",
+    "ngx-drag-drop": "^18.0.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.10"
